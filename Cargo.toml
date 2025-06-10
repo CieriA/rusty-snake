@@ -1,10 +1,6 @@
 [workspace]
 resolver = "3"
 members = [
-    "advmath",
-    "serpent",
-    "game",
-    "engine",
     "snake",
 ]
 
@@ -18,7 +14,8 @@ readme = "README.md"
 
 
 [workspace.dependencies]
-advmath = { path = "advmath" }
-serpent = { path = "serpent" }
-game = { path = "game" }
-engine = { path = "engine" }
+# External
+rand = "0.9.1"
+
+sdl2 = { version = "0.37.0", features = ["ttf"] }
+sdl2_ttf = "0.25.1"
