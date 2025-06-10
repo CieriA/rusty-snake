@@ -1,21 +1,17 @@
 # Snake (Rust + SDL2)
-
 A clean Snake clone made with Rust and SDL2.
 
 ## Features
-
 - Classic snake mechanics
 - Score system
 - Keyboard controls
 
 ## Requirements
-
 - **Rust** (stable) — install via [rustup](https://rustup.rs)
 - **SDL2** — graphics and input
 - **SDL2_ttf** — for rendering text (e.g., score display)
 
 ### SDL2 and SDL2_ttf installation
-
 #### Linux
 ```bash
 sudo apt install llibsdl2-dev libsdl2-ttf-dev
@@ -57,5 +53,4 @@ cargo doc --open
 ```
 
 ## License
-MIT License. See [LICENSE](LICENSE) for more details.
-
+This project is licensed under the ISC License. For more info see the [LICENSE](LICENSE) file.
