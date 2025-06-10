@@ -1,5 +1,5 @@
 [package]
-name = "snake"
+name = "serpent"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -8,4 +8,5 @@ repository.workspace = true
 readme.workspace = true
 
 [dependencies]
-game.workspace = true
+geomath.workspace = true
+sdl2.workspace = true
