@@ -13,10 +13,11 @@ pub struct Game {
     matrix: Matrix,
     snake: Serpent,
     score: i32,
+    command: bool,
 }
 
 impl Game {
-    pub const TICK: Duration = Duration::from_millis(200);
+    pub const TICK: Duration = Duration::from_millis(130);
     pub fn run(&mut self) -> Result<(), Box<dyn StdError>> {
         let sdl = sdl2::init()?;
         let ttf = sdl2::ttf::init()?;
@@ -43,13 +44,17 @@ impl Game {
                         if key == Keycode::Escape {
                             break 'running;
                         }
-                        self.update(key); // change direction
+                        if self.command {
+                            self.update(key); // change direction
+                            self.command = false;
+                        }
                     }
                     _ => {}
                 }
             }
 
             if last_tick.elapsed() >= Self::TICK {
+                self.command = true;
                 if self.matrix[self.snake.head()] {
                     self.matrix[self.snake.head()] = false;
                     self.snake.ate = true;
@@ -89,15 +94,12 @@ impl Game {
 
 
     pub fn make_move(&mut self) {
-        for i in (1..self.snake.coords.len()).rev() {
-            self.snake.coords[i] = self.snake.coords[i - 1]
-        }
-        if self.snake.ate {
-            self.snake.coords.push_front(self.snake.coords[0].ret_shift(self.snake.direction));
-            self.snake.ate = false;
-            self.score += 1
+        self.snake.coords.push_front(self.snake.coords[0].shift(self.snake.direction));
+        if !self.snake.ate {
+            self.snake.coords.pop_back();
         } else {
-            self.snake.coords[0].shift(self.snake.direction);
+            self.score += 1;
+            self.snake.ate = false;
         }
     }
 }

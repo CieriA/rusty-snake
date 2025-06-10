@@ -14,7 +14,7 @@ impl Point {
     }
     
     /// shift and return (does not change self)
-    pub fn ret_shift(&self, direction: Direction) -> Point {
+    pub fn shift(&self, direction: Direction) -> Point {
         let offset: Point = match direction {
             Direction::Up => (0, -1),
             Direction::Right => (1, 0),
@@ -23,10 +23,6 @@ impl Point {
         }.into();
         
         *self + offset
-    }
-    /// shift **in place**
-    pub fn shift(&mut self, direction: Direction) {
-        *self = self.ret_shift(direction);
     }
 }
 

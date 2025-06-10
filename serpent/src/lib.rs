@@ -12,7 +12,7 @@ pub struct Serpent {
 impl Default for Serpent {
     fn default() -> Self {
         Self {
-            coords: [(4, 7), (3, 7), (2, 7)].into_iter().map(Into::into).collect(),
+            coords: [(4, 7), (2, 7), (1, 7)].into_iter().map(Into::into).collect(),
             direction: Direction::default(),
             ate: false,
         }
